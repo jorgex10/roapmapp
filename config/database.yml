@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: roadmapp_dev
+
+test:
+  <<: *default
+  database: roadmapp_test
+
+production:
+  <<: *default
+  database: roadmapp_production
+  username: roadmapp
+  password: <%= ENV['ROADMAPP_DATABASE_PASSWORD'] %>

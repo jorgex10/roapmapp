@@ -1,0 +1,42 @@
+# This is the configuration used to check the Runa API source code.
+AllCops:
+  TargetRubyVersion: 2.6.4
+  DefaultFormatter: fuubar
+  Exclude:
+    - db/schema.rb
+    - db/migrate/*
+    - db/seeds/*
+    - bin/*
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false
+
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 180
+
+Metrics/ClassLength:
+  Max: 200
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: true
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: error
