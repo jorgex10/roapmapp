@@ -30,7 +30,7 @@ Metrics/ClassLength:
   Max: 200
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: true
 
 Style/Documentation:
   Enabled: false
