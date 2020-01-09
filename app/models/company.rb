@@ -1,4 +1,6 @@
 class Company < ApplicationRecord
-  validates :name, :url, presence: true
-  validates :name, uniqueness: true
+  has_many :projects
+  has_many :users
+
+  validates :name, :url, presence: true, uniqueness: true
 end

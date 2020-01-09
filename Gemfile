@@ -10,6 +10,7 @@ gem 'pg', '>= 0.18', '< 2.0' # Use postgresql as the database for Active Record.
 gem 'puma', '~> 4.3', '>= 4.3.1' # Use Puma as the app server.
 gem 'rails', '~> 6.0.0' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'.
 gem 'seedbank', '~> 0.5.0' # Adds simple rake commands for seeding your database.
+gem 'pry-rails', '~> 0.3.9' # Use Pry as your rails console.
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

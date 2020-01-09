@@ -5,6 +5,7 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.text :description
       t.datetime :init_date, null: false
       t.datetime :end_date, null: false
+      t.references :company, null: false, foreign_key: true
 
       t.timestamps
     end

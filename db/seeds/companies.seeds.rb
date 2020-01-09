@@ -1,13 +1,13 @@
 companies = [
   {
-    name: 'Company Default',
-    url: 'company.default.com',
+    name: 'Perú Company',
+    url: 'company.peru.com',
     address: 'Lima, Perú',
     phone: '+51 987654321'
   },
   {
-    name: 'Additional Company',
-    url: 'company.additional.com',
+    name: 'Colombia Company',
+    url: 'company.colombia.com',
     address: 'Bogotá, Colombia',
     phone: '+57 987654321'
   }
