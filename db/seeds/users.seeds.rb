@@ -7,21 +7,21 @@ after :companies do
       first_name: 'Tony',
       last_name: 'Stark',
       email: 'tony.stark@demo.com',
-      password_digest: 'roadmapp',
+      password: 'roadmapp',
       company: peru_company
     },
     {
       first_name: 'Steve',
       last_name: 'Rogers',
       email: 'steve.rogers@demo.com',
-      password_digest: 'roadmapp',
+      password: 'roadmapp',
       company: peru_company
     },
     {
       first_name: 'Bruce',
       last_name: 'Banner',
       email: 'bruce.banner@demo.com',
-      password_digest: 'roadmapp',
+      password: 'roadmapp',
       company: colombia_company
     },
   ]
