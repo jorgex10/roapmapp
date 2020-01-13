@@ -27,7 +27,7 @@ module Auth
     end
 
     def correct_password?
-      user && user.authenticate(password)
+      user&.authenticate(password)
     end
 
     def user

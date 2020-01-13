@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2020_01_11_173222) do
 
   create_table "sessions", force: :cascade do |t|
     t.string "access_token", null: false
-    t.string "refresh_token", null: false
     t.datetime "expires_at"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
