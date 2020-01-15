@@ -2,18 +2,20 @@
 
 module Auth
   class AuthUser
-    attr_reader :email, :password, :errors
+    attr_reader :email, :password, :session, :errors
 
     def initialize(email, password)
       @email = email
       @password = password
+      @session = nil
       @errors = []
     end
 
     def call
       return errors unless valid?
 
-      create_new_session if correct_password?
+      @session = create_new_session if correct_password?
+      @session
     end
 
     private
@@ -27,7 +29,9 @@ module Auth
     end
 
     def correct_password?
-      user&.authenticate(password)
+      correct_password = user&.authenticate(password)
+      errors << 'Invalid credentials.' unless correct_password
+      correct_password
     end
 
     def user

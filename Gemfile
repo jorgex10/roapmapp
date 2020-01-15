@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.4'
 
+gem 'active_model_serializers', '~> 0.10.10' # Allows you to generate your JSON in an object-oriented and convention-driven manner.
 gem 'bcrypt', '~> 3.1', '>= 3.1.13' # Secure hash algorithm designed for hashing passwords.
 gem 'bootsnap', '>= 1.4.2', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'pg', '>= 0.18', '< 2.0' # Use postgresql as the database for Active Record.
