@@ -9,7 +9,7 @@ module V1
       if errors.empty?
         render json: auth_service.session, serializer: SessionSerializer
       else
-        render json: {errors: errors, code: 401}, status: :unauthorized
+        render json: { errors: errors, code: 401 }, status: :unauthorized
       end
     end
 
