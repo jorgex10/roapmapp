@@ -3,7 +3,7 @@
 class ApiV1Controller < ApplicationController
   before_action :authenticate_request
 
-  attr_reader :current_user
+  attr_reader :current_user, :current_company
 
   def authenticate_request
     auth_request_service = Auth::AuthRequest.new(header_authorization)
@@ -12,6 +12,7 @@ class ApiV1Controller < ApplicationController
 
     if errors.empty?
       @current_user = auth_request_service.user
+      @current_company = @current_user.company
     else
       render json: { errors: errors, code: 401 }, status: :unauthorized
     end

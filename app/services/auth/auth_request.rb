@@ -12,7 +12,8 @@ module Auth
 
     def call
       if valid_token? && !session_expired?
-        session&.user
+        @user = session&.user
+        @user
       else
         errors
       end
