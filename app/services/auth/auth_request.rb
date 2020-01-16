@@ -2,16 +2,17 @@
 
 module Auth
   class AuthRequest
-    attr_reader :access_token, :errors
+    attr_reader :access_token, :errors, :user
 
     def initialize(access_token)
       @access_token = access_token
+      @user = nil
       @errors = []
     end
 
     def call
       if valid_token? && !session_expired?
-        user
+        session&.user
       else
         errors
       end
@@ -34,10 +35,6 @@ module Auth
 
     def session
       @session ||= Session.find_by(access_token: access_token)
-    end
-
-    def user
-      @user ||= session&.user
     end
   end
 end

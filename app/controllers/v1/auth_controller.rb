@@ -2,6 +2,8 @@
 
 module V1
   class AuthController < ApiV1Controller
+    skip_before_action :authenticate_request
+
     def login
       auth_service = Auth::AuthUser.new(login_params[:email], login_params[:password])
       auth_service.call
