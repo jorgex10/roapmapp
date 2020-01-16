@@ -8,5 +8,6 @@ Rails.application.routes.draw do
         delete :logout
       end
     end
+    resources :projects, only: %i[index]
   end
 end
