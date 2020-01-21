@@ -31,6 +31,7 @@ module Auth
     def correct_password?
       correct_password = user&.authenticate(password)
       errors << 'Invalid credentials.' unless correct_password
+
       correct_password
     end
 
@@ -45,18 +46,21 @@ module Auth
     def valid_password?
       password_present = password.present?
       errors << 'Password can\'t be blank.' unless password_present
+
       password_present
     end
 
     def email_present?
       email_present = email.present?
       errors << 'Email can\'t be blank.' unless email_present
+
       email_present
     end
 
     def valid_email_format?
       match = email.match(/\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i)
       errors << 'Email format is incorrect.' unless match
+
       match
     end
   end
