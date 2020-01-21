@@ -5,24 +5,37 @@ module V1
     skip_before_action :authenticate_request
 
     def login
-      auth_service = Auth::AuthUser.new(login_params[:email], login_params[:password])
-      auth_service.call
-      errors = auth_service.errors
+      login_service = Auth::AuthLogin.new(login_params[:email], login_params[:password])
+      login_service.call
+      errors = login_service.errors
+
       if errors.empty?
-        render json: auth_service.session, serializer: SessionSerializer
+        render json: login_service.session, serializer: SessionSerializer
       else
         render json: { errors: errors, code: 401 }, status: :unauthorized
       end
     end
 
     def logout
-      puts 'TO-DO LOGOUT'
+      logout_service = Auth::AuthLogout.new(header_authorization)
+      logout_service.call
+      errors = logout_service.errors
+
+      if errors.empty?
+        render json: { success: true, code: 200 }
+      else
+        render json: { errors: errors, code: 401 }, status: :unauthorized
+      end
     end
 
     private
 
     def login_params
       params.require(:auth).permit(:email, :password)
+    end
+
+    def header_authorization
+      @header_authorization ||= request.headers['Authorization']
     end
   end
 end
