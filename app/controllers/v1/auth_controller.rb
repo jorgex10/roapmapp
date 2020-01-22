@@ -2,7 +2,7 @@
 
 module V1
   class AuthController < ApiV1Controller
-    skip_before_action :authenticate_request
+    skip_before_action :authenticate_request, only: %i[login]
 
     def login
       login_service = Auth::AuthLogin.new(login_params[:email], login_params[:password])
@@ -26,6 +26,10 @@ module V1
       else
         render json: { errors: errors, code: 401 }, status: :unauthorized
       end
+    end
+
+    def current_user_session
+      render json: current_user, serializer: UserSerializer
     end
 
     private

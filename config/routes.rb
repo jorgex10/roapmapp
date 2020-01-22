@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       collection do
         post :login
         delete :logout
+        get :current_user_session
       end
     end
     resources :projects, only: %i[index]
