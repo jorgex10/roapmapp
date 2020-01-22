@@ -9,5 +9,6 @@ Rails.application.routes.draw do
       end
     end
     resources :projects, only: %i[index]
+    resources :users
   end
 end
