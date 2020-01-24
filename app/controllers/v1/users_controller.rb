@@ -15,5 +15,21 @@ module V1
         render json: { errors: 'User not found.', code: 404 }, status: :not_found
       end
     end
+
+    def create
+      @user = User.new(user_params)
+      @user.company = current_company
+      if @user .save
+        render json: @user, serializer: UserSerializer
+      else
+        render json: { errors: @user.errors.full_messages, code: 422 }, status: :unprocessable_entity
+      end
+    end
+
+    private
+
+    def user_params
+      params.require(:user).permit(:first_name, :last_name, :email, :password)
+    end
   end
 end
