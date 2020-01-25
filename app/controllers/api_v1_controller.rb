@@ -14,7 +14,7 @@ class ApiV1Controller < ApplicationController
       @current_user = auth_request_service.user
       @current_company = @current_user.company
     else
-      render json: { errors: errors, code: 401 }, status: :unauthorized
+      render json: ErrorResponse.unauthorized(errors), status: :unauthorized
     end
   end
 

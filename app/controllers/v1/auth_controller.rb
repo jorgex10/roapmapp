@@ -12,7 +12,7 @@ module V1
       if errors.empty?
         render json: login_service.session, serializer: SessionSerializer
       else
-        render json: { errors: errors, code: 401 }, status: :unauthorized
+        render json: ErrorResponse.unauthorized(errors), status: :unauthorized
       end
     end
 
@@ -24,7 +24,7 @@ module V1
       if errors.empty?
         render json: { success: true, code: 200 }
       else
-        render json: { errors: errors, code: 401 }, status: :unauthorized
+        render json: ErrorResponse.unauthorized(errors), status: :unauthorized
       end
     end
 

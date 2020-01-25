@@ -12,7 +12,7 @@ module V1
       if @user
         render json: @user, serializer: UserSerializer
       else
-        render json: { errors: 'User not found.', code: 404 }, status: :not_found
+        render json: ErrorResponse.not_found(User), status: :not_found
       end
     end
 
@@ -22,7 +22,7 @@ module V1
       if @user .save
         render json: @user, serializer: UserSerializer
       else
-        render json: { errors: @user.errors.full_messages, code: 422 }, status: :unprocessable_entity
+        render json: ErrorResponse.unprocessable_entity(@user), status: :unprocessable_entity
       end
     end
 
