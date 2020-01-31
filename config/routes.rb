@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         get :current_user_session
       end
     end
-    resources :projects, only: %i[index]
+    resources :projects
     resources :users
   end
 end
