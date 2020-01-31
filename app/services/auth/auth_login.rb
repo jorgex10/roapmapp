@@ -14,21 +14,23 @@ module Auth
     def call
       return errors unless valid?
 
-      @session = create_new_session if correct_password?
+      @session = create_new_session if valid_password?
       @session
     end
 
     private
 
     def valid?
-      valid_email? && valid_password?
+      valid_email? &&
+        present_password? &&
+        active_user?
     end
 
     def create_new_session
       user.sessions.create
     end
 
-    def correct_password?
+    def valid_password?
       correct_password = user&.authenticate(password)
       errors << 'Invalid credentials.' unless correct_password
 
@@ -43,11 +45,18 @@ module Auth
       email_present? && valid_email_format?
     end
 
-    def valid_password?
-      password_present = password.present?
-      errors << 'Password can\'t be blank.' unless password_present
+    def present_password?
+      present_password = password.present?
+      errors << 'Password can\'t be blank.' unless present_password
 
-      password_present
+      present_password
+    end
+
+    def active_user?
+      active_user = user&.active?
+      errors << 'User is inactive.' unless active_user
+
+      active_user
     end
 
     def email_present?

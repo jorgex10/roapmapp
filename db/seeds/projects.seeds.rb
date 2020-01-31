@@ -6,6 +6,7 @@ after :companies do
     {
       name: 'Project ABC',
       description: 'company.default.com',
+      status: :active,
       init_date: 3.months.ago,
       end_date: 5.months.after,
       company: peru_company
@@ -13,6 +14,7 @@ after :companies do
     {
       name: 'Project DEF',
       description: 'company.additional.com',
+      status: :active,
       init_date: 1.year.ago,
       end_date: 4.months.ago,
       company: peru_company
@@ -27,6 +29,7 @@ after :companies do
     {
       name: 'Project JKL',
       description: 'company.additional.com',
+      status: :active,
       init_date: 6.months.ago,
       end_date: 3.months.ago,
       company: colombia_company

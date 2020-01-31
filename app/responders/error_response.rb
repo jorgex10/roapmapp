@@ -30,4 +30,20 @@ class ErrorResponse
       code: 401
     }
   end
+
+  def self.bad_request(errors)
+    {
+      message: 'Request not processed',
+      errors: errors,
+      code: 400
+    }
+  end
+
+  def self.routing_error(errors)
+    {
+      message: 'Routing error',
+      errors: errors,
+      code: 404
+    }
+  end
 end

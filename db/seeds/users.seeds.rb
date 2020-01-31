@@ -8,6 +8,7 @@ after :companies do
       last_name: 'Stark',
       email: 'tony.stark@demo.com',
       password: 'roadmapp',
+      status: :active,
       company: peru_company
     },
     {
@@ -15,6 +16,7 @@ after :companies do
       last_name: 'Rogers',
       email: 'steve.rogers@demo.com',
       password: 'roadmapp',
+      status: :active,
       company: peru_company
     },
     {

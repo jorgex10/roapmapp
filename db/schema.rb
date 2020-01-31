@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_01_11_173222) do
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
+    t.integer "status", default: 0, null: false
     t.datetime "init_date", null: false
     t.datetime "end_date", null: false
     t.bigint "company_id", null: false
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 2020_01_11_173222) do
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "email", null: false
+    t.integer "status", default: 0, null: false
     t.string "password_digest", null: false
     t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
