@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Auth
-  class AuthLogin
+  class Login
     attr_reader :email, :password, :session, :errors
 
     def initialize(email, password)

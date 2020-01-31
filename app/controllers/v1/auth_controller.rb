@@ -5,7 +5,7 @@ module V1
     skip_before_action :authenticate_request, only: %i[login]
 
     def login
-      login_service = Auth::AuthLogin.new(login_params[:email], login_params[:password])
+      login_service = Auth::Login.new(login_params[:email], login_params[:password])
       login_service.call
       errors = login_service.errors
 
@@ -17,7 +17,7 @@ module V1
     end
 
     def logout
-      logout_service = Auth::AuthLogout.new(header_authorization)
+      logout_service = Auth::Logout.new(header_authorization)
       logout_service.call
       errors = logout_service.errors
 
