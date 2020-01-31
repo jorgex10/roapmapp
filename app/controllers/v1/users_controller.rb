@@ -2,13 +2,14 @@
 
 module V1
   class UsersController < ApiV1Controller
+    before_action :set_user, only: %i[show update]
+
     def index
       @users = current_company.users
       render json: @users, each_serializer: UserSerializer
     end
 
     def show
-      @user = User.find_by(id: params[:id])
       if @user
         render json: @user, serializer: UserSerializer
       else
@@ -27,7 +28,6 @@ module V1
     end
 
     def update
-      @user = User.find_by(id: params[:id])
       @user.assign_attributes(user_params)
       if @user.save
         render json: @user, serializer: UserSerializer
@@ -40,6 +40,10 @@ module V1
 
     def user_params
       params.require(:user).permit(:first_name, :last_name, :email, :password)
+    end
+
+    def set_user
+      @user = User.find_by(id: params[:id])
     end
   end
 end
