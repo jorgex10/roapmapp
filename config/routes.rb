@@ -9,7 +9,9 @@ Rails.application.routes.draw do
         get :current_user_session
       end
     end
-    resources :projects
+    resources :projects do
+      resources :members
+    end
     resources :users
   end
 end
