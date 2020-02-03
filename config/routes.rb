@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
     end
     resources :projects do
-      resources :members
+      resources :members, except: %i[edit update]
     end
     resources :users
   end
