@@ -1,20 +1,18 @@
 # frozen_string_literal: true
 
 module Auth
-  class Request
-    attr_reader :access_token, :errors, :user
+  class LogoutService
+    attr_reader :access_token, :errors
 
     def initialize(access_token)
       @access_token = access_token
-      @user = nil
       @errors = []
     end
 
     def call
       return errors unless valid?
 
-      @user = session&.user
-      @user
+      session.expire!
     end
 
     private

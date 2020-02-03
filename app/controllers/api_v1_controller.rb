@@ -6,7 +6,7 @@ class ApiV1Controller < ApplicationController
   attr_reader :current_user, :current_company
 
   def authenticate_request
-    auth_request_service = Auth::Request.new(header_authorization)
+    auth_request_service = Auth::RequestService.new(header_authorization)
     auth_request_service.call
     errors = auth_request_service.errors
 
