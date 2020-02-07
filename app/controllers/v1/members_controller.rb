@@ -12,28 +12,23 @@ module V1
       end
     end
 
-    def show
-      # @project = Project.find_by(id: params[:id])
-      # if @project
-      #   render json: @project, serializer: ProjectSerializer
-      # else
-      #   render json: ErrorResponse.not_found(Project), status: :not_found
-      # end
-    end
+    def show; end
 
     def create
-      registration_service = Members::RegistrationService.new(members_params)
-      render json: { success: registration_service }
-      # if @project.save
-      #   render json: @project, serializer: ProjectSerializer
-      # else
-      #   render json: ErrorResponse.unprocessable_entity(@project), status: :unprocessable_entity
-      # end
+      registration_service = Members::RegistrationService.new(member_params, @project)
+      registration_service.call
+
+      errors = registration_service.errors
+      if errors.present?
+        render json: ErrorResponse.unprocessable_entity(registration_service), status: :unprocessable_entity
+      else
+        render json: @project, serializer: MemberRegistrationSerializer, service: registration_service
+      end
     end
 
     private
 
-    def members_params
+    def member_params
       params.require(:user).permit(ids: [])
     end
 

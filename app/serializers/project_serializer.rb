@@ -2,4 +2,6 @@
 
 class ProjectSerializer < ActiveModel::Serializer
   attributes :id, :name, :description, :status, :init_date, :end_date
+
+  has_many :members
 end
