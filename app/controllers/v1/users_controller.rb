@@ -10,11 +10,7 @@ module V1
     end
 
     def show
-      if @user
-        render json: @user, serializer: UserSerializer
-      else
-        render json: ErrorResponse.not_found(User), status: :not_found
-      end
+      render json: @user, serializer: UserSerializer
     end
 
     def create
@@ -44,6 +40,7 @@ module V1
 
     def set_user
       @user = User.find_by(id: params[:id])
+      render json: ErrorResponse.not_found(User), status: :not_found unless @user
     end
   end
 end

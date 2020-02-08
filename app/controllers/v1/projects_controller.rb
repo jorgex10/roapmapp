@@ -10,12 +10,7 @@ module V1
     end
 
     def show
-      @project = Project.find_by(id: params[:id])
-      if @project
-        render json: @project, serializer: ProjectSerializer
-      else
-        render json: ErrorResponse.not_found(Project), status: :not_found
-      end
+      render json: @project, serializer: ProjectSerializer
     end
 
     def create
@@ -45,6 +40,7 @@ module V1
 
     def set_project
       @project = Project.find_by(id: params[:id])
+      render json: ErrorResponse.not_found(Project), status: :not_found unless @project
     end
   end
 end
