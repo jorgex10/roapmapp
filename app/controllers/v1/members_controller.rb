@@ -5,11 +5,7 @@ module V1
     before_action :set_project
 
     def index
-      if @project
-        render json: @project.members, each_serializer: UserSerializer
-      else
-        render json: ErrorResponse.not_found(Project), status: :not_found
-      end
+      render json: @project.members, each_serializer: UserSerializer
     end
 
     def show; end
@@ -34,6 +30,7 @@ module V1
 
     def set_project
       @project = Project.find_by(id: params[:project_id])
+      render json: ErrorResponse.not_found(Project), status: :not_found unless @project
     end
   end
 end
