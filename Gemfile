@@ -16,7 +16,7 @@ gem 'seedbank', '~> 0.5.0' # Adds simple rake commands for seeding your database
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
-  gem 'rspec', '~> 3.8'
+  gem 'rspec-rails', '~> 3.9'
   gem 'rubocop', '~> 0.74.0'
 end
 
