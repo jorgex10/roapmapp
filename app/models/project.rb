@@ -12,6 +12,14 @@ class Project < ApplicationRecord
   validate :date_constraint
 
   def date_constraint
+    return false unless valid_dates?
+
     errors.add(:end_date, 'must be greater than init date') if init_date > end_date
+  end
+
+  private
+
+  def valid_dates?
+    init_date.present? && end_date.present?
   end
 end

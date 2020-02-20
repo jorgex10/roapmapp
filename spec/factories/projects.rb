@@ -8,10 +8,10 @@ FactoryBot.define do
     init_date { Faker::Date.between(from: Date.today.beginning_of_year, to: Date.today) }
     end_date { Faker::Date.between(from: 1.day.after, to: Date.today.end_of_year) }
 
+    company
+
     trait :inactive do
       status { :inactive }
     end
-
-    company
   end
 end

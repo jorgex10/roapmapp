@@ -2,8 +2,8 @@
 
 FactoryBot.define do
   factory :session do
-    access_token { Faker::Crypto.sha1 }
-    expires_at { 2.days.after }
+    before(:create) { set_access_token }
+    before(:create) { set_expires_at }
 
     user
   end

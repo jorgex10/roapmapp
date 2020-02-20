@@ -16,10 +16,12 @@ gem 'seedbank', '~> 0.5.0' # Adds simple rake commands for seeding your database
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'database_cleaner-active_record'
   gem 'factory_bot_rails', '~> 5.1', '>= 5.1.1'
   gem 'faker', '~> 2.10', '>= 2.10.2'
   gem 'rspec-rails', '~> 3.9'
   gem 'rubocop', '~> 0.74.0'
+  gem 'shoulda-matchers', '~> 4.3'
 end
 
 group :development do
