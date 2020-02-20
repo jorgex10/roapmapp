@@ -15,7 +15,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe "Validations" do
+  describe 'Validations' do
     let!(:user) { create(:user) }
 
     it { should validate_presence_of(:first_name) }
@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
   end
 
   describe 'Instance methods' do
-    context "#full_name" do
+    context '#full_name' do
       let!(:user) { create(:user) }
 
       it 'should return first_name and last_name' do

@@ -17,15 +17,19 @@ RSpec.describe Session, type: :model do
 
   describe 'Callbacks' do
     it 'should have access_token value' do
-      expect{ session.save }.to change{ session.access_token }
+      session.save
+
+      expect(session.access_token).to be_a(String)
     end
 
     it 'should have expires_at value' do
-      expect{ session.save }.to change{ session.expires_at }
+      session.save
+
+      expect(session.expires_at).to be_a(ActiveSupport::TimeWithZone)
     end
   end
 
-  describe "Associations" do
+  describe 'Associations' do
     it { should belong_to(:user).required }
   end
 end
