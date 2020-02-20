@@ -9,5 +9,9 @@ FactoryBot.define do
     password { Faker::Hacker.ingverb }
 
     company
+
+    trait :inactive do
+      status { :inactive }
+    end
   end
 end
