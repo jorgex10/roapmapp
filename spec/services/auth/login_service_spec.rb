@@ -6,13 +6,6 @@ RSpec.describe Auth::LoginService, type: :module do
   let!(:active_user) { create(:user) }
 
   describe 'Handle behavior' do
-    let!(:empty_email) { '' }
-    let!(:wrong_email) { 'asd@example.com' }
-    let!(:null_email) { nil }
-    let!(:empty_password) { '' }
-    let!(:wrong_password) { 'qweasdzxc' }
-    let!(:null_password) { nil }
-
     let!(:valid_email) { active_user.email }
     let!(:password) { 'password' }
 
@@ -21,6 +14,8 @@ RSpec.describe Auth::LoginService, type: :module do
     end
 
     context 'empty email' do
+      let!(:empty_email) { '' }
+
       it 'must trigger error' do
         login_service = Auth::LoginService.new(empty_email, password)
         login_service.call
@@ -30,6 +25,8 @@ RSpec.describe Auth::LoginService, type: :module do
     end
 
     context 'wrong email' do
+      let!(:wrong_email) { 'asd@example.com' }
+
       it 'must trigger error' do
         login_service = Auth::LoginService.new(wrong_email, password)
         login_service.call
@@ -39,6 +36,8 @@ RSpec.describe Auth::LoginService, type: :module do
     end
 
     context 'null email' do
+      let!(:null_email) { nil }
+
       it 'must trigger error' do
         login_service = Auth::LoginService.new(null_email, password)
         login_service.call
@@ -48,6 +47,8 @@ RSpec.describe Auth::LoginService, type: :module do
     end
 
     context 'empty password' do
+      let!(:empty_password) { '' }
+
       it 'must trigger error' do
         login_service = Auth::LoginService.new(valid_email, empty_password)
         login_service.call
@@ -57,6 +58,8 @@ RSpec.describe Auth::LoginService, type: :module do
     end
 
     context 'wrong password' do
+      let!(:wrong_password) { 'qweasdzxc' }
+
       it 'must trigger error' do
         login_service = Auth::LoginService.new(valid_email, wrong_password)
         login_service.call
@@ -66,6 +69,8 @@ RSpec.describe Auth::LoginService, type: :module do
     end
 
     context 'null password' do
+      let!(:null_password) { nil }
+
       it 'must trigger error' do
         login_service = Auth::LoginService.new(valid_email, null_password)
         login_service.call
