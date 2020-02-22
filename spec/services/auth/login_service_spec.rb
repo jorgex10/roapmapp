@@ -58,7 +58,7 @@ RSpec.describe Auth::LoginService, type: :module do
     end
 
     context 'wrong password' do
-      let!(:wrong_password) { 'qweasdzxc' }
+      let!(:wrong_password) { 'wrong_password' }
 
       it 'must trigger error' do
         login_service = Auth::LoginService.new(valid_email, wrong_password)

@@ -32,7 +32,7 @@ module Auth
 
     def session_expired?
       expired_value = session.expired?
-      errors << 'Session expired' if expired_value
+      errors << 'Session expired.' if expired_value
 
       expired_value
     end
