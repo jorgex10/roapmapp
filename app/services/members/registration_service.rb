@@ -27,14 +27,14 @@ module Members
 
     def valid_project?
       project_present = project.present?
-      errors << 'Project not found' unless project_present
+      errors << 'Project not found.' unless project_present
 
       project_present
     end
 
     def active_project?
       project_active = project&.active?
-      errors << 'Project is inactive' unless project_active
+      errors << 'Project is inactive.' unless project_active
 
       project_active
     end
