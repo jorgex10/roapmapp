@@ -6,7 +6,7 @@ RSpec.describe V1::AuthController, type: :controller do
   describe 'POST #login' do
     context 'with wrong parameters' do
       it 'must return unauthorized http status' do
-        post :login, params: { auth: { email: 'runahr@demo.com', password: 'password' } }
+        post :login, params: { auth: { email: 'example@demo.com', password: 'password' } }
 
         expect(response).to have_http_status(:unauthorized)
       end
