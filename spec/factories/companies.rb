@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :company do
-    name { Faker::Company.industry }
+    name { Faker::Company.unique.industry }
     url { "www.#{name.gsub(' ', '').underscore}.com" }
     address { Faker::Address.street_address }
     phone { Faker::PhoneNumber.cell_phone }
