@@ -4,6 +4,7 @@ class Project < ApplicationRecord
   enum status: { inactive: 0, active: 1 }
 
   belongs_to :company
+  has_many :categories
   has_many :user_projects
   has_many :members, through: :user_projects, source: :user
 

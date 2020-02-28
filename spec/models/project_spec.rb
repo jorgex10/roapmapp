@@ -26,6 +26,7 @@ RSpec.describe Project, type: :model do
 
   describe 'Associations' do
     it { should belong_to(:company).required }
+    it { should have_many(:categories) }
     it { should have_many(:user_projects) }
     it { should have_many(:members).through(:user_projects).source(:user) }
   end
