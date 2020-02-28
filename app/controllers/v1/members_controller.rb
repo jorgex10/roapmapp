@@ -13,8 +13,8 @@ module V1
     def create
       registration_service = Members::RegistrationService.new(member_params, @project)
       registration_service.call
-
       errors = registration_service.errors
+
       if errors.present?
         render json: ErrorResponse.unprocessable_entity(registration_service), status: :unprocessable_entity
       else
@@ -29,7 +29,7 @@ module V1
     end
 
     def set_project
-      @project = Project.find_by(id: params[:project_id])
+      @project = current_company.projects.find_by(id: params[:project_id])
       render json: ErrorResponse.not_found(Project), status: :not_found unless @project
     end
   end

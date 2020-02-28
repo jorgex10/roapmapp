@@ -14,8 +14,7 @@ module V1
     end
 
     def create
-      @project = Project.new(project_params)
-      @project.company = current_company
+      @project = current_company.projects.new(project_params)
       if @project.save
         render json: @project, serializer: ProjectSerializer
       else
@@ -39,7 +38,7 @@ module V1
     end
 
     def set_project
-      @project = Project.find_by(id: params[:id])
+      @project = current_company.projects.find_by(id: params[:id])
       render json: ErrorResponse.not_found(Project), status: :not_found unless @project
     end
   end

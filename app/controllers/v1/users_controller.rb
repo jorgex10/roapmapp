@@ -14,8 +14,7 @@ module V1
     end
 
     def create
-      @user = User.new(user_params)
-      @user.company = current_company
+      @user = current_company.users.new(user_params)
       if @user.save
         render json: @user, serializer: UserSerializer
       else
@@ -39,7 +38,7 @@ module V1
     end
 
     def set_user
-      @user = User.find_by(id: params[:id])
+      @user = current_company.users.find_by(id: params[:id])
       render json: ErrorResponse.not_found(User), status: :not_found unless @user
     end
   end

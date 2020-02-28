@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe V1::MembersController, type: :controller do
   let(:user) { create(:user) }
+  let!(:company) { user.company }
   let(:session) { user.sessions.create }
   let(:access_token) { session.access_token }
   let(:headers) { { 'Authorization' => access_token } }
@@ -14,7 +15,7 @@ RSpec.describe V1::MembersController, type: :controller do
 
   describe 'GET #index' do
     context 'with any members' do
-      let(:project) { create(:project) }
+      let(:project) { create(:project, company: company) }
 
       it 'must return success http status' do
         get :index, params: { project_id: project.id }
@@ -28,7 +29,7 @@ RSpec.describe V1::MembersController, type: :controller do
 
   describe 'POST #create' do
     context 'with an empty ids params' do
-      let(:project) { create(:project) }
+      let(:project) { create(:project, company: company) }
       let(:user_1) { create(:user) }
       let(:user_2) { create(:user) }
       let(:params) do
