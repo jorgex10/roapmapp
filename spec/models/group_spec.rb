@@ -2,12 +2,11 @@
 
 require 'rails_helper'
 
-RSpec.describe Project, type: :model do
+RSpec.describe Group, type: :model do
   describe 'Attributes' do
     %w[
       name
       description
-      status
       init_date
       end_date
     ].each do |attribute|
@@ -16,7 +15,7 @@ RSpec.describe Project, type: :model do
   end
 
   describe 'Validations' do
-    let!(:project) { create(:project) }
+    let!(:group) { create(:group) }
 
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:init_date) }
@@ -25,10 +24,6 @@ RSpec.describe Project, type: :model do
   end
 
   describe 'Associations' do
-    it { should belong_to(:company).required }
-    it { should have_many(:categories) }
-    it { should have_many(:groups) }
-    it { should have_many(:user_projects) }
-    it { should have_many(:members).through(:user_projects).source(:user) }
+    it { should belong_to(:project) }
   end
 end

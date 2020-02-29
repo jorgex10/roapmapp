@@ -5,6 +5,7 @@ class Project < ApplicationRecord
 
   belongs_to :company
   has_many :categories
+  has_many :groups
   has_many :user_projects
   has_many :members, through: :user_projects, source: :user
 
