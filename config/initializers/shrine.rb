@@ -1,11 +1,18 @@
 # frozen_string_literal: true
 
 require 'shrine'
-require 'shrine/storage/file_system'
+require 'cloudinary'
+require 'shrine/storage/cloudinary'
+
+Cloudinary.config(
+  cloud_name: 'dqipfc8vz',
+  api_key: '361764875525163',
+  api_secret: 'iqOwc77YIEC_4proV6tnb61eYNo'
+)
 
 Shrine.storages = {
-  cache: Shrine::Storage::FileSystem.new('public', prefix: 'uploads/cache'),
-  store: Shrine::Storage::FileSystem.new('public', prefix: 'uploads')
+  cache: Shrine::Storage::Cloudinary.new(prefix: 'uploads/cache'),
+  store: Shrine::Storage::Cloudinary.new(prefix: 'uploads')
 }
 
 Shrine.plugin :activerecord
