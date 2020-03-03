@@ -10,7 +10,7 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.13' # Secure hash algorithm designed for hashing
 gem 'bootsnap', '>= 1.4.2', require: false # Reduces boot times through caching; required in config/boot.rb
 gem 'pg', '>= 0.18', '< 2.0' # Use postgresql as the database for Active Record.
 gem 'pry-rails', '~> 0.3.9' # Use Pry as your rails console.
-gem 'puma', '~> 4.3', '>= 4.3.1' # Use Puma as the app server.
+gem 'puma', '~> 4.3' # Use Puma as the app server.
 gem 'rails', '~> 6.0.0' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'.
 gem 'seedbank', '~> 0.5.0' # Adds simple rake commands for seeding your database.
 gem 'shrine', '~> 3.2', '>= 3.2.1' # Shrine is a toolkit for file attachments in Ruby applications.
