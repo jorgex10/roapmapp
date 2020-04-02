@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     end
     resources :projects do
       resources :members, except: %i[edit update]
+      resources :tasks, only: %i[create]
     end
     resources :users
   end
