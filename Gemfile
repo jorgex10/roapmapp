@@ -8,6 +8,7 @@ ruby '2.6.4'
 gem 'active_model_serializers', '~> 0.10.10' # Allows you to generate your JSON in an object-oriented and convention-driven manner.
 gem 'bcrypt', '~> 3.1', '>= 3.1.13' # Secure hash algorithm designed for hashing passwords.
 gem 'bootsnap', '>= 1.4.2', require: false # Reduces boot times through caching; required in config/boot.rb
+gem 'dotenv-rails', '~> 2.7', '>= 2.7.5' # Autoload dotenv in Rails.
 gem 'pg', '>= 0.18', '< 2.0' # Use postgresql as the database for Active Record.
 gem 'pry-rails', '~> 0.3.9' # Use Pry as your rails console.
 gem 'puma', '~> 4.3' # Use Puma as the app server.
