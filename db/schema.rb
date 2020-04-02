@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2020_03_29_171301) do
   create_table "tasks", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
+    t.integer "status", default: 0, null: false
     t.bigint "category_id"
     t.bigint "group_id"
     t.bigint "owner_id"

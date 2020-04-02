@@ -3,12 +3,15 @@
 module V1
   class MembersController < ApiV1Controller
     before_action :set_project
+    before_action :set_member, only: %i[show]
 
     def index
       render json: @project.members, each_serializer: UserSerializer
     end
 
-    def show; end
+    def show
+      render json: @member, serializer: UserSerializer
+    end
 
     def create
       registration_service = Members::RegistrationService.new(member_params, @project)
@@ -26,6 +29,11 @@ module V1
 
     def member_params
       params.require(:user).permit(ids: [])
+    end
+
+    def set_member
+      @member = @project.members.find_by(id: params[:id])
+      render json: ErrorResponse.not_found(User), status: :not_found unless @member
     end
 
     def set_project

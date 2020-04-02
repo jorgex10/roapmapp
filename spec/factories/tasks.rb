@@ -2,8 +2,12 @@
 
 FactoryBot.define do
   factory :task do
-    name { 'MyString' }
-    description { 'MyText' }
-    owner_id { '' }
+    name { Faker::Educator.unique.course_name }
+    description { Faker::Lorem.paragraph }
+    status { 0 }
+
+    association :owner, factory: :user
+    category
+    group
   end
 end

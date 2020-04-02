@@ -39,7 +39,7 @@ RSpec.describe V1::ProjectsController, type: :controller do
 
         expect(response).to have_http_status(:success)
         expect(body_response).not_to be_empty
-        expect(body_response.count).to eq(7)
+        expect(body_response.count).to eq(9)
       end
     end
   end
@@ -63,7 +63,7 @@ RSpec.describe V1::ProjectsController, type: :controller do
 
         expect(response).to have_http_status(:success)
         expect(body_response).not_to be_empty
-        expect(body_response.count).to eq(7)
+        expect(body_response.count).to eq(9)
       end
     end
 
@@ -109,7 +109,7 @@ RSpec.describe V1::ProjectsController, type: :controller do
 
         expect(response).to have_http_status(:success)
         expect(body_response).not_to be_empty
-        expect(body_response.count).to eq(7)
+        expect(body_response.count).to eq(9)
       end
     end
   end

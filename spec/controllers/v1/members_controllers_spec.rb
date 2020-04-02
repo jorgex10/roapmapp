@@ -27,8 +27,30 @@ RSpec.describe V1::MembersController, type: :controller do
     end
   end
 
+  describe 'GET #show' do
+    context 'with a member' do
+      let!(:project) { create(:project, company: company) }
+      let!(:user) { create(:user) }
+      let(:params) do
+        {
+          user: { ids: [user.id] },
+          project_id: project.id
+        }
+      end
+
+      it 'must return success http status' do
+        post :create, params: params
+        get :show, params: { project_id: project.id, id: user.id }
+        body_response = JSON.parse(response.body)
+
+        expect(body_response).not_to be_empty
+        expect(response).to have_http_status(:success)
+      end
+    end
+  end
+
   describe 'POST #create' do
-    context 'with an empty ids params' do
+    context 'with an ids array params' do
       let(:project) { create(:project, company: company) }
       let(:user_1) { create(:user) }
       let(:user_2) { create(:user) }
