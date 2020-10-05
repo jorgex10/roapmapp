@@ -14,7 +14,7 @@ gem 'pry-rails', '~> 0.3.9' # Use Pry as your rails console.
 gem 'puma', '~> 4.3' # Use Puma as the app server.
 gem 'rails', '~> 6.0.0' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'.
 gem 'seedbank', '~> 0.5.0' # Adds simple rake commands for seeding your database.
-gem 'shrine', '~> 3.2', '>= 3.2.1' # Shrine is a toolkit for file attachments in Ruby applications.
+gem 'shrine', '~> 3.3' # Shrine is a toolkit for file attachments in Ruby applications.
 gem 'shrine-cloudinary', '~> 1.1', '>= 1.1.1' # Provides Cloudinary storage for Shrine.
 
 group :development, :test do
